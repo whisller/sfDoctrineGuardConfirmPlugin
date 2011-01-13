@@ -23,7 +23,7 @@ class ConfirmAction extends sfAction
         $sfGuardConfirm->setConfirm(true);
         $sfGuardConfirm->save();
 
-        $this->dispatcher->notify(new sfEvent($sfGuardConfirm, 'sf_doctrine_guard_confirm_plugin.confirm_success', array('hash' => $hash, 'kind' => $kind)));
+        $this->dispatcher->notify(new sfEvent($sfGuardConfirm, 'sf_doctrine_guard_confirm_plugin.confirm_success_'.$kind));
 
         $url = sfConfig::get('app_sfDoctrineGuardConfirmPlugin_success_confirm_url_'.$kind, '@homepage');
         if ($url) {
