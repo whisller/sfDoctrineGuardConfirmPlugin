@@ -83,7 +83,6 @@ class PluginsfGuardConfirmTable extends Doctrine_Table
     {
         $sfGuardConfirm = new sfGuardConfirm();
         $sfGuardConfirm->setSfGuardUserId($sfGuardUser->getId());
-        $sfGuardConfirm->setHash(sha1(mt_rand(5,15).microtime().uniqid().microtime().mt_rand(5,15)));
         $sfGuardConfirm->setKind($kind);
         $sfGuardConfirm->save($conn);
 

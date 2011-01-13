@@ -26,4 +26,16 @@ abstract class PluginsfGuardConfirm extends BasesfGuardConfirm
      * @author Daniel Ancuta <whisller@gmail.com>
      */
     const KIND_CHANGE_EMAIL = 'change_email';
+
+    /**
+     * @see    Doctrine_Record::preInsert()
+     * @author Daniel Ancuta <whisller@gmail.com>
+     */
+    public function preInsert($event)
+    {
+        parent::preInsert($event);
+
+        // setup hash for this object
+        $this->setHash(sha1(mt_rand(5,15).microtime().uniqid().microtime().mt_rand(5,15)));
+    }
 }
