@@ -79,11 +79,12 @@ class PluginsfGuardConfirmTable extends Doctrine_Table
      *
      * @author Daniel Ancuta <whisller@gmail.com>
      */
-    public function createNewConfirm(sfGuardUser $sfGuardUser, $kind, $conn = null)
+    public function createNewConfirm(sfGuardUser $sfGuardUser, $kind, array $data = array(), $conn = null)
     {
         $sfGuardConfirm = new sfGuardConfirm();
         $sfGuardConfirm->setSfGuardUserId($sfGuardUser->getId());
         $sfGuardConfirm->setKind($kind);
+        $sfGuardConfirm->setConfirmData($data);
         $sfGuardConfirm->save($conn);
 
         return $sfGuardConfirm;

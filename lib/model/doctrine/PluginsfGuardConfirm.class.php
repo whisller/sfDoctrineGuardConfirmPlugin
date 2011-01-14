@@ -29,6 +29,7 @@ abstract class PluginsfGuardConfirm extends BasesfGuardConfirm
 
     /**
      * @see    Doctrine_Record::preInsert()
+     *
      * @author Daniel Ancuta <whisller@gmail.com>
      */
     public function preInsert($event)
@@ -37,5 +38,19 @@ abstract class PluginsfGuardConfirm extends BasesfGuardConfirm
 
         // setup hash for this object
         $this->setHash(sha1(mt_rand(5,15).microtime().uniqid().microtime().mt_rand(5,15)));
+    }
+
+    /**
+     * Serialize the data that will be stored in confirmation.
+     *
+     * You can use it to store data that will be used after confirmation will be finished e.g. for change email - you store new email and use i to update user object.
+     *
+     * @param  Mixed $data
+     *
+     * @author Daniel Ancuta <whisller@gmail.com>
+     */
+    public function setConfirmData($data)
+    {
+        $this->_set('confirm_data', serialize($data));
     }
 }
