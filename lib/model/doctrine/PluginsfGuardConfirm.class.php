@@ -53,4 +53,16 @@ abstract class PluginsfGuardConfirm extends BasesfGuardConfirm
     {
         $this->_set('confirm_data', serialize($data));
     }
+
+    /**
+     * Return serialized data as unserialized array
+     *
+     * @return Array
+     *
+     * @author Daniel Ancuta <whisller@gmail.com>
+     */
+    public function getConfirmDataAsArray()
+    {
+        return unserialize($this->getConfirmData());
+    }
 }
